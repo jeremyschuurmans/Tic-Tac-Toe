@@ -1,6 +1,6 @@
 # Tic-Tac-Toe
 
-[![Build status](https://travis-ci.org/palledorous/travis-lab.svg?master)](https://travis-ci.org/palledorous)
+[![Build status](https://travis-ci.org/palledorous/Tic-Tac-Toe.svg?master)](https://travis-ci.org/palledorous)
 
 ## Usage
 
