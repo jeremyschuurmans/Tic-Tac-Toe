@@ -1,5 +1,7 @@
 # Tic-Tac-Toe
 
+[![Build status](https://travis-ci.org/palledorous/travis-lab.svg?master)](https://travis-ci.org/palledorous)
+
 ## Usage
 
 1. To start the game, run `<insert command here>`
