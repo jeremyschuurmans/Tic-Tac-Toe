@@ -5,3 +5,4 @@ def test_tic_tac_toe_board():
     ttt = TicTacToe()
     assert isinstance(ttt.board, list)  # board is a list
     assert (len(ttt.board)) == 9        # board length is 9
+    assert ttt.board[0] == " "          # board contains empty strings
