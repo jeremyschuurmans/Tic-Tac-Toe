@@ -10,4 +10,3 @@ class TicTacToe:
         print(f'  {self.board[6]} | {self.board[7]} | {self.board[8]}')
 
         # print(f'Hello {name}! This is {program}')
-    
