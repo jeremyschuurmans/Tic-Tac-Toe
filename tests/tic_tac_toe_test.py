@@ -2,14 +2,14 @@ import pytest
 from tic_tac_toe.tic_tac_toe import TicTacToe
 
 def test_tic_tac_toe_board():
-    ttt = TicTacToe()
+    ttt = TicTacToe(board = [" ", " ", " ", " ", " ", " ", " ", " ", " "])
     
     assert isinstance(ttt.board, list)  # board is a list
     assert (len(ttt.board)) == 9        # board length is 9
     assert ttt.board[0] == " "          # board contains empty strings
 
 def test_tic_tac_toe_display_board(capfd):
-    ttt = TicTacToe()
+    ttt = TicTacToe(board = [" ", " ", " ", " ", " ", " ", " ", " ", " "])
 
     ttt.display_board(ttt.board)
 
@@ -24,7 +24,7 @@ def test_tic_tac_toe_display_board(capfd):
         #      |   |     
 
 def test_tic_tac_toe_display_board_with_user_token(capfd):
-    ttt = TicTacToe()
+    ttt = TicTacToe(board = [" ", " ", " ", " ", " ", " ", " ", " ", " "])
 
     ttt.board = ["X", " ", " ", " ", "X", " ", " ", " ", "X"]
 
