@@ -22,3 +22,19 @@ def test_tic_tac_toe_display_board(capfd):
         #      |   |     
         # ---------------
         #      |   |     
+
+def test_tic_tac_toe_display_board_with_user_token(capfd):
+    ttt = TicTacToe()
+
+    ttt.board = ["X", " ", " ", " ", "X", " ", " ", " ", "X"]
+
+    ttt.display_board(ttt.board)
+
+    mock_output_with_plays = capfd.readouterr()
+    assert mock_output_with_plays.out == '  X |   |  \n''--------------\n''    | X |  \n''--------------\n''    |   | X\n'
+
+    #   X |   |
+    # --------------
+    #     | X |
+    # --------------
+    #     |   | X
