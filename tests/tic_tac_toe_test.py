@@ -41,3 +41,10 @@ def test_tic_tac_toe_display_board_with_user_token(capfd):
 """
     assert mock_output_with_plays.out == expected
 
+
+def test_tic_tac_toe_move():
+    ttt = TicTacToe(board=[" ", " ", " ", " ", " ", " ", " ", " ", " "])
+
+    ttt.move(selection=3)
+
+    assert ttt.board[2] == "X"
