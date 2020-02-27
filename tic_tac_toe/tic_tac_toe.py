@@ -13,5 +13,5 @@ class TicTacToe:
         self.board[selection - 1] = token
 
     def play(self):
-        self.move(selection=5)
+        self.move(selection=4)
         self.display_board()
