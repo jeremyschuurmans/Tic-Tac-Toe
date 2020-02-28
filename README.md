@@ -4,7 +4,7 @@
 
 ## Usage
 
-1. To start the game, run `python tictactoe.py`
+1. To start the game, run `python -m tic_tac_toe`
 
 2. The game will ask if Player 1 would like to be 'X' or 'O'. Select your token of choice.
 
