@@ -10,7 +10,7 @@ def test_tic_tac_toe_initialized_with_a_3_x_3_board():
 def test_tic_tac_toe_move():
     new_board = Board()
 
-    new_board.move(selection=3)
+    new_board.move(selection=2)
 
     assert new_board.board[2] == "X"
 
