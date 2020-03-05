@@ -16,14 +16,14 @@ class Board:
 
         view.display_board(self.board)
 
-        user_input = int(input()) - 1
+        selected_space = int(input()) - 1
 
-        if self.valid_move(user_input):
-            self.move(user_input, token)
+        if self.valid_move(selected_space):
+            self.move(selected_space, token)
         else:
             self.turn()
 
-    def move(self, selection, token="X"):
+    def move(self, selection, token):
         self.board[selection] = token
 
     def turn_count(self):
@@ -36,13 +36,7 @@ class Board:
             return "O"
 
     def position_taken(self, index):
-        if self.board[index] == "X" or self.board[index] == "O":
-            return True
-        else:
-            return False
+        return self.board[index] == "X" or self.board[index] == "O"
 
     def valid_move(self, index):
-        if index >= 0 and index <= 8 and self.position_taken(index) == False:
-            return True
-        else:
-            return False
+        return index >= 0 and index <= 8 and self.position_taken(index) == False
