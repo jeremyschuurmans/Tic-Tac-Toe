@@ -41,3 +41,20 @@ def test_turn_count_keeps_track_of_number_of_turns():
     new_board.board = ["X", "O", " ", " ", " ", " ", " ", " ", " "]
 
     assert new_board.turn_count() == 2
+
+
+def current_player_returns_current_player_token():
+    new_board = Board()
+
+    new_board.board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+
+    assert new_board.current_player == "X"
+
+    new_board.board = ["X", " ", " ", " ", " ", " ", " ", " ", " "]
+
+    assert new_board.current_player == "O"
+
+    new_board.board = ["X", "O", " ", " ", " ", " ", " ", " ", " "]
+
+    assert new_board.current_player == "X"
+

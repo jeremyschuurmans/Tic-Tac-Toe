@@ -14,6 +14,12 @@ class Board:
     def turn_count(self):
         return self.board.count("X") + self.board.count("O")
 
+    def current_player(self):
+        if self.turn_count % 2 == 0:
+            return "X"
+        else:
+            return "O"
+
     def position_taken(self, index):
         if self.board[index] == "X" or self.board[index] == "O":
             return True
