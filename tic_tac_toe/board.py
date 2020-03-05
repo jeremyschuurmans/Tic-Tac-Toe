@@ -6,10 +6,7 @@ class Board:
         return self.board[index]
 
     def move(self, selection, token="X"):
-        if self.valid_move(selection - 1):
-            self.board[selection - 1] = token
-        else:
-            print("Oops, that selection was invalid.")
+        self.board[selection - 1] = token
 
     def turn_count(self):
         return self.board.count("X") + self.board.count("O")
