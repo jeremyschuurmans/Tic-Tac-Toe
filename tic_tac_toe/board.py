@@ -8,9 +8,9 @@ class Board:
     def turn(self, view, selection):
         token = self.current_player()
 
-        view.display_board(self, self.board)
+        view.display_board(self)
 
-        selected_space = selection.input_validator(self)
+        selected_space = selection.input_validator()
 
         if self.valid_move(selected_space):
             self.move(selected_space, token)
@@ -32,3 +32,4 @@ class Board:
 
     def valid_move(self, index):
         return index >= 0 and index <= 8 and self.position_taken(index) == False
+

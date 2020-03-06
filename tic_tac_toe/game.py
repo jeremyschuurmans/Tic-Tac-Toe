@@ -5,9 +5,8 @@ from tic_tac_toe.user_input import UserInput
 
 def run():
     board = Board()
-    view = CommandLineBoardPresenter
-    user_selection = UserInput
+    view = CommandLineBoardPresenter()
+    user_selection = UserInput()
 
     while True:
         board.turn(view, user_selection)
-
