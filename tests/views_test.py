@@ -1,14 +1,15 @@
 from tic_tac_toe.board import Board
-from tic_tac_toe.views import BoardDisplay
+from tic_tac_toe.views import CommandLineBoardPresenter
 
 
 def test_tic_tac_toe_display_board(capfd):
+    new_board = Board()
+    view = CommandLineBoardPresenter()
 
-    view = BoardDisplay()
-    board = Board()
-    view.display_board(board)
+    view.display_board(new_board)
 
     mock_output = capfd.readouterr()
+
     expected = """\
     |   |  
 --------------
@@ -21,12 +22,14 @@ def test_tic_tac_toe_display_board(capfd):
 
 def test_tic_tac_toe_display_board_with_user_token(capfd):
 
-    board_with_plays = Board()
-    board_with_plays.board = ["X", " ", " ", " ", "X", " ", " ", " ", "X"]
-    board = BoardDisplay()
-    board.display_board(board_with_plays)
+    new_board = Board()
+    new_board.board = ["X", " ", " ", " ", "X", " ", " ", " ", "X"]
+    view = CommandLineBoardPresenter()
+
+    view.display_board(new_board)
 
     mock_output_with_plays = capfd.readouterr()
+
     expected = """\
   X |   |  
 --------------

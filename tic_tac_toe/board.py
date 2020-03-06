@@ -1,6 +1,3 @@
-from tic_tac_toe.views import BoardDisplay
-
-
 class Board:
     def __init__(self):
         self.board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
@@ -8,20 +5,18 @@ class Board:
     def __getitem__(self, index):
         return self.board[index]
 
-    def turn(self):
-        view = BoardDisplay()
+    def turn(self, view, selection):
         token = self.current_player()
 
-        print("Please enter 1-9.")
+        view.display_board(self, self.board)
 
-        view.display_board(self.board)
-
-        selected_space = int(input()) - 1
+        selected_space = selection.input_validator(self)
 
         if self.valid_move(selected_space):
             self.move(selected_space, token)
         else:
-            self.turn()
+            print("Sorry, that's not a valid move.\n")
+            self.turn(view, selection)
 
     def move(self, selection, token):
         self.board[selection] = token
@@ -30,10 +25,7 @@ class Board:
         return self.board.count("X") + self.board.count("O")
 
     def current_player(self):
-        if self.turn_count() % 2 == 0:
-            return "X"
-        else:
-            return "O"
+        return "X" if self.turn_count() % 2 == 0 else "O"
 
     def position_taken(self, index):
         return self.board[index] == "X" or self.board[index] == "O"
