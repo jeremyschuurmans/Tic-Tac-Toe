@@ -57,11 +57,10 @@ def test_position_taken_returns_true_if_square_is_already_occupied_and_false_if_
     assert not new_board.position_taken(1)
 
 
-def test_valid_move_returns_true_if_move_is_within_index_range_and_square_is_not_occupied():
+def test_within_bounds_returns_true_if_move_is_within_index_range():
     new_board = Board()
 
     new_board.board = ["X", " ", " ", " ", " ", " ", " ", " ", " "]
 
-    assert not new_board.valid_move(10)
-    assert not new_board.valid_move(0)
-    assert new_board.valid_move(1)
+    assert not new_board.within_bounds(10)
+    assert new_board.within_bounds(1)
