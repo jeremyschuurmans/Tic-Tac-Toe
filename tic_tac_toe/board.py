@@ -8,13 +8,13 @@ class Board:
     def turn(self, selection):
         token = self.current_player()
 
-        if self.within_bounds(selection):
-            if self.position_taken(selection) == False:
-                self.move(selection, token)
-            else:
-                raise KeyError
-        else:
+        if not self.within_bounds(selection):
             raise IndexError
+
+        if self.position_taken(selection):
+            raise KeyError
+
+        self.move(selection, token)
 
     def move(self, selection, token):
         self.board[selection] = token
