@@ -4,14 +4,14 @@
 
 ## Usage
 
-1. To start the game, run `python -m tic_tac_toe`
+1. To start the game, run `python3 -m tic_tac_toe`
 
-2. The game will ask if Player 1 would like to be 'X' or 'O'. Select your token of choice.
+2. The game will display on screen instructions.
 
-3. A Tic Tac Toe board will display, and you will be asked to choose a square upon which to place your token. Select your square by entering the number corresponding to your square of choice (1-9).
+3. A Tic Tac Toe board will display, and you will be asked to choose a square upon which to place your token. Player 1 will be X and have the first move. Select your square by entering the number corresponding to your square of choice (1-9).
 
 4. Now it will be Player 2's turn. Repeat steps 2 and 3.
 
 5. Alternate players until someone wins or the game is a draw.
 
-6. The game will then ask if you would like to play again, or quit.
+6. Repeat!
