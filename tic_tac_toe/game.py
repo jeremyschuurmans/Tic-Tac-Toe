@@ -17,10 +17,12 @@ def run():
     user_selection = UserInput()
     errors = Errors(printer)
 
+    view.display_board(board, printer)
+
     while not board.game_over():
-        view.display_board(board, printer)
         try:
             selection = user_selection.process_input()
+            board.turn(selection)
         except InputNotNumericError:
             errors.input_not_numeric_error_message()
         except InvalidBoardIndexError:
@@ -28,6 +30,4 @@ def run():
         except PositionAlreadyTakenError:
             errors.position_already_taken_error_message()
         finally:
-            board.turn(selection)
             view.display_board(board, printer)
-
