@@ -67,12 +67,38 @@ def test_within_bounds_returns_true_if_move_is_within_index_range():
     assert new_board.within_bounds(1)
 
 
-def test_win_can_detect_a_winning_combination_present_on_the_game_board():
+@pytest.mark.parametrize(
+    "board_state,win_status",
+    [
+        ([" ", " ", " ", " ", " ", " ", " ", " ", " "], False),
+        (["X", "O", " ", " ", " ", " ", " ", " ", " "], False),
+        (["X", "O", "X", "O", "X", "O", "X", " ", "X"], True),
+    ],
+)
+def test_win_can_detect_a_winning_combination_present_on_the_game_board(
+    board_state, win_status
+):
     new_board = Board()
 
-    new_board.board = ["X", " ", " ", " ", "X", " ", " ", " ", "X"]
+    new_board.board = board_state
 
-    assert new_board.win()
+    assert new_board.win() == win_status
+
+
+@pytest.mark.parametrize(
+    "board_state,game_over_status",
+    [
+        ([" ", " ", " ", " ", " ", " ", " ", " ", " "], False),
+        (["X", "O", " ", " ", " ", " ", " ", " ", " "], False),
+        (["X", "O", "X", "O", "X", "O", "X", " ", "X"], True),
+    ],
+)
+def test_game_over_returns_true_when_a_game_is_won(board_state, game_over_status):
+    new_board = Board()
+
+    new_board.board = board_state
+
+    assert new_board.game_over() == game_over_status
 
 
 def test_board_raises_error_if_index_not_on_board():

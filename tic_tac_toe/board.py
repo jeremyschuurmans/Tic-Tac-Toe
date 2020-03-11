@@ -49,10 +49,14 @@ class Board:
         won = False
         for combination in self.win_combinations:
             if (
-                self.board[combination[0]]
+                self.board[combination[0]] != " "
+                and self.board[combination[0]]
                 == self.board[combination[1]]
                 == self.board[combination[2]]
             ):
                 won = True
         return won
+
+    def game_over(self):
+        return self.win()
 
