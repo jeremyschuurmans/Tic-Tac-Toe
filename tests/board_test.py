@@ -67,6 +67,14 @@ def test_within_bounds_returns_true_if_move_is_within_index_range():
     assert new_board.within_bounds(1)
 
 
+def test_win_can_detect_a_winning_combination_present_on_the_game_board():
+    new_board = Board()
+
+    new_board.board = ["X", " ", " ", " ", "X", " ", " ", " ", "X"]
+
+    assert new_board.win()
+
+
 def test_board_raises_error_if_index_not_on_board():
     new_board = Board()
 
