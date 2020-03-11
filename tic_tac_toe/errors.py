@@ -15,3 +15,15 @@ class Errors:
             "Sorry, that position has already been taken, please choose another:\n"
         )
         self.printer.print_item(self.message)
+
+
+class InputNotNumericError(Exception):
+    pass
+
+
+class InvalidBoardIndexError(Exception):
+    pass
+
+
+class PositionAlreadyTakenError(Exception):
+    pass

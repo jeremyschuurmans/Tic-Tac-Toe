@@ -1,3 +1,6 @@
+from tic_tac_toe.errors import InvalidBoardIndexError, PositionAlreadyTakenError
+
+
 class Board:
     def __init__(self):
         self.board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
@@ -9,10 +12,10 @@ class Board:
         token = self.current_player()
 
         if not self.within_bounds(selection):
-            raise IndexError
+            raise InvalidBoardIndexError()
 
         if self.position_taken(selection):
-            raise KeyError
+            raise PositionAlreadyTakenError()
 
         self.move(selection, token)
 

@@ -1,4 +1,5 @@
 from tic_tac_toe.board import Board
+from tic_tac_toe.errors import InvalidBoardIndexError, PositionAlreadyTakenError
 import pytest
 
 
@@ -64,3 +65,18 @@ def test_within_bounds_returns_true_if_move_is_within_index_range():
 
     assert not new_board.within_bounds(10)
     assert new_board.within_bounds(1)
+
+
+def test_board_raises_error_if_index_not_on_board():
+    new_board = Board()
+
+    with pytest.raises(InvalidBoardIndexError):
+        new_board.turn(9)
+
+
+def test_board_raises_error_when_positions_are_taken():
+    new_board = Board()
+    new_board.board = ["X"]
+
+    with pytest.raises(PositionAlreadyTakenError):
+        new_board.turn(0)
