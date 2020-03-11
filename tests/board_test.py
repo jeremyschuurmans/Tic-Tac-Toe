@@ -85,6 +85,15 @@ def test_win_can_detect_a_winning_combination_present_on_the_game_board(
     assert new_board.win() == win_status
 
 
+def test_win_saves_the_winner():
+    new_board = Board()
+
+    new_board.board = ["X", "O", "X", "O", "X", "O", "X", " ", "X"]
+
+    assert new_board.win()
+    assert new_board.winner == "X"
+
+
 def test_tie_can_detect_a_full_board_with_no_winners():
     new_board = Board()
 

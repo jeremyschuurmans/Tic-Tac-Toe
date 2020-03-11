@@ -1,5 +1,5 @@
 class CommandLineBoardPresenter:
-    def display_board(self, board, printer):
+    def display_board(self, board, printer, current_player):
         formatted_board = f"""\
               {board[0]} | {board[1]} | {board[2]}
             --------------
