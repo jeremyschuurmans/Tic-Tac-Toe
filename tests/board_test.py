@@ -85,6 +85,14 @@ def test_win_can_detect_a_winning_combination_present_on_the_game_board(
     assert new_board.win() == win_status
 
 
+def test_tie_can_detect_a_full_board_with_no_winners():
+    new_board = Board()
+
+    new_board.board = ["X", "O", "X", "O", "X", "O", "O", "X", "O"]
+
+    assert new_board.tie()
+
+
 @pytest.mark.parametrize(
     "board_state,game_over_status",
     [

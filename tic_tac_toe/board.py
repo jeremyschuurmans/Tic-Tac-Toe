@@ -57,6 +57,9 @@ class Board:
                 won = True
         return won
 
+    def tie(self):
+        return self.board.count(" ") == 0 and not self.win()
+
     def game_over(self):
-        return self.win()
+        return self.win() or self.tie()
 
