@@ -6,7 +6,7 @@ from tic_tac_toe.errors import (
     Errors,
     InvalidBoardIndexError,
     InputNotNumericError,
-    PositionAlreadyTaken,
+    PositionAlreadyTakenError,
 )
 
 
@@ -23,8 +23,8 @@ def run():
             selection = user_selection.process_input()
             board.turn(selection)
         except InputNotNumericError:
-            errors.invalid_input_error()
+            errors.input_not_numeric_error_message()
         except InvalidBoardIndexError:
-            errors.index_out_of_range_error()
-        except PositionAlreadyTaken:
-            errors.position_already_taken_error()
+            errors.invalid_board_index_error_message()
+        except PositionAlreadyTakenError:
+            errors.position_already_taken_error_message()
