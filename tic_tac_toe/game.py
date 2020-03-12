@@ -21,9 +21,9 @@ def run():
     user_selection = UserInput()
     errors = Errors(printer)
 
-    user_messages.logo()
-
     user_messages.countdown()
+
+    user_messages.logo()
 
     user_messages.instructions_option()
 

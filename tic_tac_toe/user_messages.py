@@ -41,24 +41,23 @@ class UserMessages:
             --------------
               7 | 8 | 9 
         """,
-        "show": "\nI'll show you really quick.\n",
         "demo board": """\
+        \nI'll show you really quick.\n
                 |   |  
             --------------
                 |   |  
             --------------
                 |   |  
         """,
-        "demo": "\nLet's say I'm Player 1, and I choose",
-        "square": "\n5",
+        "demo": "\nLet's say I'm Player 1, and I choose 5\n",
         "play": """\
                 |   |  
             --------------
                 | X |  
             --------------
                 |   |  
+        \nMy token gets put on square 5.
         """,
-        "completed move": "\nMy token gets put on square 5.",
         "easy right?": "\nEasy, right?",
         "objective": "\nYour objective is to place three tokens in a row",
         "horizontally": """\
@@ -97,7 +96,7 @@ class UserMessages:
     def display_instructions(self):
         for instruction in self.instructions.values():
             self.printer.print_item(instruction)
-            time.sleep(2.5)
+            time.sleep(3)
 
     def whos_turn(self, player, board):
         turn = f"It's {board.current_player()}'s turn"
