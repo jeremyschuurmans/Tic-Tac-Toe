@@ -29,90 +29,43 @@ class UserMessages:
             time.sleep(1)
             seconds -= 1
 
-    def instructions(self):
-        intro = "\nHere are your instructions:"
-
-        self.printer.print_item(intro)
-
-        time.sleep(3)
-
-        player_tokens = "\nPlayer 1 will be X, and Player 2 will be O."
-
-        self.printer.print_item(player_tokens)
-
-        time.sleep(3)
-
-        game_play = "\nPlayers will take turns placing tokens on the board."
-
-        self.printer.print_item(game_play)
-
-        time.sleep(3)
-
-        objective = "\nYour objective is to place three tokens in a row"
-
-        self.printer.print_item(objective)
-        time.sleep(2)
-
-        horizontally = "\neither horizontally\n"
-
-        self.printer.print_item(horizontally)
-        self.example_horizontal_win()
-
-        time.sleep(3)
-
-        vertically = "\nvertically\n"
-
-        self.printer.print_item(vertically)
-        self.example_vertical_win()
-        time.sleep(3)
-
-        diagonally = "\nor diagonally\n"
-
-        self.printer.print_item(diagonally)
-        self.example_diagonal_win()
-        time.sleep(3)
-
-        winner = "\nThe first player to get three in a row wins.\n"
-
-        self.printer.print_item(winner)
-        time.sleep(4)
-
-        first_move = "\nPlayer 1, the first move is yours. Please choose 1 - 9:\n"
-
-        self.printer.print_item(first_move)
-
-    def example_horizontal_win(self):
-        win = """\
+    instructions = {
+        "intro": "\nHere are your instructions:",
+        "player tokens": "\nPlayer 1 will be X, and Player 2 will be O.",
+        "game play": "\nPlayers will take turns placing tokens on the board.",
+        "objective": "\nYour objective is to place three tokens in a row",
+        "horizontally": """\
+        \neither horizontally\n
               X | X | X
             --------------
                 |   |  
             --------------
                 |   |  
-        """
-
-        self.printer.print_item(win)
-
-    def example_vertical_win(self):
-        win = """\
+        """,
+        "vertically": """\
+            \nvertically\n
                 | X |  
             --------------
                 | X |  
             --------------
                 | X |  
-        """
-
-        self.printer.print_item(win)
-
-    def example_diagonal_win(self):
-        win = """\
+        """,
+        "diagonally": """\
+            \nor diagonally\n
                 |   | X
             --------------
                 | X |  
             --------------
               X |   |  
-        """
+        """,
+        "winner": "\nThe first player to get three in a row wins.\n",
+        "first move": "\nPlayer 1, the first move is yours. Please choose 1 - 9:\n",
+    }
 
-        self.printer.print_item(win)
+    def display_instructions(self):
+        for instruction in self.instructions.values():
+            self.printer.print_item(instruction)
+            time.sleep(2)
 
     def whos_turn(self):
         turn = f"{self.board.current_player()}'s turn"

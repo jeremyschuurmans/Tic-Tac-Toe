@@ -23,9 +23,10 @@ def test_user_interface_prints_example_horizontal_win():
     spy = PrinterSpy()
     user_message = UserMessages(spy, board=None)
 
-    user_message.example_horizontal_win()
+    spy.print_item(user_message.instructions["horizontally"])
 
     expected = """\
+        \neither horizontally\n
               X | X | X
             --------------
                 |   |  
@@ -40,9 +41,10 @@ def test_user_interface_prints_example_vertical_win():
     spy = PrinterSpy()
     user_message = UserMessages(spy, board=None)
 
-    user_message.example_vertical_win()
+    spy.print_item(user_message.instructions["vertically"])
 
     expected = """\
+            \nvertically\n
                 | X |  
             --------------
                 | X |  
@@ -57,9 +59,10 @@ def test_user_interface_prints_example_diagonal_win():
     spy = PrinterSpy()
     user_message = UserMessages(spy, board=None)
 
-    user_message.example_diagonal_win()
+    spy.print_item(user_message.instructions["diagonally"])
 
     expected = """\
+            \nor diagonally\n
                 |   | X
             --------------
                 | X |  

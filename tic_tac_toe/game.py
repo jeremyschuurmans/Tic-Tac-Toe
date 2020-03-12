@@ -23,7 +23,7 @@ def run():
 
     user_messages.countdown()
 
-    user_messages.instructions()
+    user_messages.display_instructions()
 
     view.display_board(board, printer)
 
