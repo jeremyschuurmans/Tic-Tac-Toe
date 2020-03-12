@@ -23,9 +23,14 @@ def run():
 
     user_messages.countdown()
 
-    user_messages.display_instructions()
+    user_messages.instructions_option()
 
-    view.display_board(board, printer)
+    if user_selection.process_input() == 0:
+        user_messages.display_instructions()
+        view.display_board(board, printer)
+    else:
+        view.display_board(board, printer)
+        user_messages.whos_turn()
 
     while not board.game_over():
         try:
