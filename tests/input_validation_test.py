@@ -2,7 +2,6 @@ from unittest import mock
 import pytest
 
 from tic_tac_toe.user_input import UserInput
-from tic_tac_toe.board import Board
 from tic_tac_toe.errors import InputNotNumericError
 
 
