@@ -1,4 +1,5 @@
 from tic_tac_toe.board import Board
+from tic_tac_toe.player import Human
 from tic_tac_toe.errors import InvalidBoardIndexError, PositionAlreadyTakenError
 import pytest
 
@@ -7,14 +8,6 @@ def test_tic_tac_toe_initialized_with_a_3_x_3_board():
     new_board = Board()
 
     assert len(new_board.board) == 9
-
-
-def test_tic_tac_toe_move():
-    new_board = Board()
-
-    new_board.move(selection=2, token="X")
-
-    assert new_board.board[2] == "X"
 
 
 @pytest.mark.parametrize(
@@ -120,14 +113,17 @@ def test_game_over_returns_true_when_a_game_is_won(board_state, game_over_status
 
 def test_board_raises_error_if_index_not_on_board():
     new_board = Board()
+    player = Human(token="X")
 
     with pytest.raises(InvalidBoardIndexError):
-        new_board.turn(9)
+        new_board.turn(9, player)
 
 
 def test_board_raises_error_when_positions_are_taken():
     new_board = Board()
+    player = Human(token="O")
+
     new_board.board = ["X"]
 
     with pytest.raises(PositionAlreadyTakenError):
-        new_board.turn(0)
+        new_board.turn(0, player)

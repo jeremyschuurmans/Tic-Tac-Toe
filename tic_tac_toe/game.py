@@ -1,4 +1,5 @@
 from tic_tac_toe.board import Board
+from tic_tac_toe.player import Player, Human
 from tic_tac_toe.views import CommandLineBoardPresenter
 from tic_tac_toe.user_messages import UserMessages
 from tic_tac_toe.printer import Printer
@@ -13,6 +14,7 @@ from tic_tac_toe.errors import (
 
 def run():
     board = Board()
+    player = Human(token=None)
     view = CommandLineBoardPresenter()
     printer = Printer()
     user_messages = UserMessages(printer, board)
@@ -30,12 +32,12 @@ def run():
         view.display_board(board, printer)
     else:
         view.display_board(board, printer)
-        user_messages.whos_turn()
+        user_messages.whos_turn(player)
 
     while not board.game_over():
         try:
             selection = user_selection.process_input()
-            board.turn(selection)
+            board.turn(selection, player)
         except InputNotNumericError:
             errors.input_not_numeric_error_message()
         except InvalidBoardIndexError:
@@ -45,7 +47,7 @@ def run():
         finally:
             view.display_board(board, printer)
             if not board.win() and not board.tie():
-                user_messages.whos_turn()
+                user_messages.whos_turn(player)
 
     if board.win():
         user_messages.who_won()

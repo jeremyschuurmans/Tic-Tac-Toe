@@ -20,8 +20,8 @@ class Board:
     def __getitem__(self, index):
         return self.board[index]
 
-    def turn(self, selection):
-        token = self.current_player()
+    def turn(self, selection, player):
+        player.token = self.current_player()
 
         if not self.within_bounds(selection):
             raise InvalidBoardIndexError()
@@ -29,10 +29,7 @@ class Board:
         if self.position_taken(selection):
             raise PositionAlreadyTakenError()
 
-        self.move(selection, token)
-
-    def move(self, selection, token):
-        self.board[selection] = token
+        player.move(selection, self.board)
 
     def turn_count(self):
         return self.board.count("X") + self.board.count("O")
@@ -41,7 +38,7 @@ class Board:
         return "X" if self.turn_count() % 2 == 0 else "O"
 
     def position_taken(self, index):
-        return self.board[index] == "X" or self.board[index] == "O"
+        return self.board[index] != " "
 
     def within_bounds(self, index):
         return index >= 0 and index <= 8

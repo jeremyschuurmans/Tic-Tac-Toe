@@ -100,7 +100,7 @@ class UserMessages:
             self.printer.print_item(instruction)
             time.sleep(2.5)
 
-    def whos_turn(self):
+    def whos_turn(self, player):
         turn = f"It's {self.board.current_player()}'s turn"
 
         self.printer.print_item(turn)
