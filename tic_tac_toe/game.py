@@ -17,7 +17,7 @@ def run():
     player = Human(token=None)
     view = CommandLineBoardPresenter()
     printer = Printer()
-    user_messages = UserMessages(printer, board)
+    user_messages = UserMessages(printer)
     user_selection = UserInput()
     errors = Errors(printer)
 
@@ -32,7 +32,7 @@ def run():
         view.display_board(board, printer)
     else:
         view.display_board(board, printer)
-        user_messages.whos_turn(player)
+        user_messages.whos_turn(player, board)
 
     while not board.game_over():
         try:
@@ -47,10 +47,10 @@ def run():
         finally:
             view.display_board(board, printer)
             if not board.win() and not board.tie():
-                user_messages.whos_turn(player)
+                user_messages.whos_turn(player, board)
 
     if board.win():
-        user_messages.who_won()
+        user_messages.who_won(board)
 
     if board.tie():
         user_messages.its_a_tie()

@@ -5,7 +5,7 @@ import pytest
 
 def test_user_interface_prints_logo_to_user():
     spy = PrinterSpy()
-    user_message = UserMessages(spy, board=None)
+    user_message = UserMessages(spy)
 
     user_message.logo()
 
@@ -21,7 +21,7 @@ def test_user_interface_prints_logo_to_user():
 
 def test_user_interface_prints_example_horizontal_win():
     spy = PrinterSpy()
-    user_message = UserMessages(spy, board=None)
+    user_message = UserMessages(spy)
 
     spy.print_item(user_message.instructions["horizontally"])
 
@@ -39,7 +39,7 @@ def test_user_interface_prints_example_horizontal_win():
 
 def test_user_interface_prints_example_vertical_win():
     spy = PrinterSpy()
-    user_message = UserMessages(spy, board=None)
+    user_message = UserMessages(spy)
 
     spy.print_item(user_message.instructions["vertically"])
 
@@ -57,7 +57,7 @@ def test_user_interface_prints_example_vertical_win():
 
 def test_user_interface_prints_example_diagonal_win():
     spy = PrinterSpy()
-    user_message = UserMessages(spy, board=None)
+    user_message = UserMessages(spy)
 
     spy.print_item(user_message.instructions["diagonally"])
 

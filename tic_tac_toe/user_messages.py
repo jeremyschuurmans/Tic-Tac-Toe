@@ -2,9 +2,8 @@ import time
 
 
 class UserMessages:
-    def __init__(self, printer, board):
+    def __init__(self, printer):
         self.printer = printer
-        self.board = board
 
     def logo(self):
         logo = """
@@ -100,13 +99,13 @@ class UserMessages:
             self.printer.print_item(instruction)
             time.sleep(2.5)
 
-    def whos_turn(self, player):
-        turn = f"It's {self.board.current_player()}'s turn"
+    def whos_turn(self, player, board):
+        turn = f"It's {board.current_player()}'s turn"
 
         self.printer.print_item(turn)
 
-    def who_won(self):
-        winner = f"{self.board.winner}, you're the winner!"
+    def who_won(self, board):
+        winner = f"{board.winner}, you're the winner!"
 
         self.printer.print_item(winner)
 
@@ -114,4 +113,9 @@ class UserMessages:
         tie_game = "Looks like it's a tie! You're both winners in my book!"
 
         self.printer.print_item(tie_game)
+
+    def play_again(self):
+        play_again = "Would you like to play again? Type 1 for 'yes', and 2 for 'no'"
+
+        self.printer.print_item(play_again)
 
