@@ -8,7 +8,7 @@ def test_tic_tac_toe_display_board():
     view = CommandLineBoardPresenter()
     spy = PrinterSpy()
 
-    view.display_board(new_board, spy, current_player="X")
+    view.display_board(new_board, spy)
 
     expected = """\
                 |   |  
@@ -28,7 +28,7 @@ def test_tic_tac_toe_display_board_with_user_token():
 
     new_board.board = ["X", " ", " ", " ", "X", " ", " ", " ", "X"]
 
-    view.display_board(new_board, spy, current_player=None)
+    view.display_board(new_board, spy)
 
     expected = """\
               X |   |  

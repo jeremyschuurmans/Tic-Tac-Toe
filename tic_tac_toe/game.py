@@ -25,7 +25,7 @@ def run():
 
     user_messages.instructions()
 
-    view.display_board(board, printer, board.current_player())
+    view.display_board(board, printer)
 
     while not board.game_over():
         try:
@@ -38,7 +38,7 @@ def run():
         except PositionAlreadyTakenError:
             errors.position_already_taken_error_message()
         finally:
-            view.display_board(board, printer, board.current_player())
+            view.display_board(board, printer)
             if not board.win() and not board.tie():
                 user_messages.whos_turn()
 
