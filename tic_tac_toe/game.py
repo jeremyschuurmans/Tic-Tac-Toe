@@ -3,7 +3,6 @@ from tic_tac_toe.player import Player, Human
 from tic_tac_toe.views import CommandLineBoardPresenter
 from tic_tac_toe.user_messages import UserMessages
 from tic_tac_toe.printer import Printer
-from tic_tac_toe.user_input import UserInput
 from tic_tac_toe.errors import (
     Errors,
     InvalidBoardIndexError,
@@ -18,7 +17,7 @@ def run():
     view = CommandLineBoardPresenter()
     printer = Printer()
     user_messages = UserMessages(printer)
-    user_selection = UserInput()
+    # user_selection = UserInput()
     errors = Errors(printer)
 
     user_messages.countdown()
@@ -27,7 +26,7 @@ def run():
 
     user_messages.instructions_option()
 
-    if user_selection.process_input() == 0:
+    if player.get_input() == 0:
         user_messages.display_instructions()
         view.display_board(board, printer)
     else:
@@ -36,7 +35,7 @@ def run():
 
     while not board.game_over():
         try:
-            selection = user_selection.process_input()
+            selection = player.get_input()
             board.turn(selection, player)
         except InputNotNumericError:
             errors.input_not_numeric_error_message()
