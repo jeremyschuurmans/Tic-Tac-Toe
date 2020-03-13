@@ -1,6 +1,9 @@
 from tic_tac_toe.user_messages import UserMessages
+from tic_tac_toe.board import Board
 from tests.printer_spy import PrinterSpy
 import pytest
+
+UserMessages.SLEEP_DURATION = 0
 
 
 def test_user_interface_prints_logo_to_user():
@@ -59,16 +62,23 @@ def test_user_interface_prints_example_diagonal_win():
     spy = PrinterSpy()
     user_message = UserMessages(spy)
 
-    spy.print_item(user_message.instructions["diagonally"])
+    user_message.display_instructions()
 
-    expected = """\
-            \nor diagonally\n
-                |   | X
-            --------------
-                | X |  
-            --------------
-              X |   |  
-        """
+    expected = user_message.instructions.values()
 
-    assert spy.printed() == expected
+    for actual, expected in zip(spy.printed_items, expected):
+        assert actual == expected
+
+
+def test_user_interface_congratulates_winner():
+    spy = PrinterSpy()
+    user_message = UserMessages(spy)
+    board = Board()
+
+    board.board = ["X", "O", "X", "O", "X", "O", "X", " ", " "]
+    board.win()
+
+    user_message.who_won(board)
+
+    assert spy.printed_item == "X, you're the winner!"
 

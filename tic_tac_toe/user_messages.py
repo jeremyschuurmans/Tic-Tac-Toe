@@ -2,6 +2,8 @@ import time
 
 
 class UserMessages:
+    SLEEP_DURATION = 3
+
     def __init__(self, printer):
         self.printer = printer
 
@@ -96,7 +98,7 @@ class UserMessages:
     def display_instructions(self):
         for instruction in self.instructions.values():
             self.printer.print_item(instruction)
-            time.sleep(3)
+            time.sleep(UserMessages.SLEEP_DURATION)
 
     def whos_turn(self, player, board):
         turn = f"It's {board.current_player()}'s turn"
