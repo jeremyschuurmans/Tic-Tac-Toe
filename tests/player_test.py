@@ -15,7 +15,7 @@ def test_human_player_can_make_a_move():
 
     player.move(2, new_board.board)
 
-    assert new_board.board[2] == "X"
+    assert new_board.board[1] == "X"
 
 
 def test_computer_player_can_make_a_move():
@@ -23,7 +23,9 @@ def test_computer_player_can_make_a_move():
     # new_board.board = ["X", "O", " ", "X", "O", " ", "X", " ", " "]
     computer = Computer(token="X")
 
-    computer.move(None, new_board.board)
+    selection = computer.get_available_space(None, new_board.board)
+
+    computer.move(selection, new_board.board)
 
     assert new_board.board.index("X") != None
 
@@ -43,6 +45,8 @@ def test_computer_player_only_places_token_on_free_spaces(
 
     computer = Computer(token="X")
 
-    computer.move(None, new_board.board)
+    selection = computer.get_available_space(None, new_board.board)
+
+    computer.move(selection, new_board.board)
 
     assert new_board.board.count(" ") == open_space_count - 1

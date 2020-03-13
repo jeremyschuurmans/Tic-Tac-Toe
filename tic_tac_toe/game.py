@@ -1,5 +1,5 @@
 from tic_tac_toe.board import Board
-from tic_tac_toe.player import Player, Human
+from tic_tac_toe.player import Player, Human, Computer
 from tic_tac_toe.views import CommandLineBoardPresenter
 from tic_tac_toe.user_messages import UserMessages
 from tic_tac_toe.printer import Printer
@@ -17,7 +17,6 @@ def run():
     view = CommandLineBoardPresenter()
     printer = Printer()
     user_messages = UserMessages(printer)
-    # user_selection = UserInput()
     errors = Errors(printer)
 
     user_messages.countdown()
@@ -26,7 +25,7 @@ def run():
 
     user_messages.instructions_option()
 
-    if player.get_input() == 0:
+    if player.get_input() == 1:
         user_messages.display_instructions()
         view.display_board(board, printer)
     else:

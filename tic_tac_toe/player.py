@@ -15,22 +15,25 @@ class Human(Player):
         user_entry = input()
 
         try:
-            return int(user_entry) - 1
+            return int(user_entry)
         except ValueError:
             raise InputNotNumericError()
 
     def move(self, selection, board):
-        board[selection] = self.token
+        board[selection - 1] = self.token
 
 
 class Computer(Player):
     def __init__(self, token):
         super().__init__(token)
 
-    def move(self, selection, board):
+    def get_available_space(self, selection, board):
         available_spaces = [index for index, space in enumerate(board) if space == " "]
 
         selection = random.choice(available_spaces)
 
+        return selection
+
+    def move(self, selection, board):
         board[selection] = self.token
 
