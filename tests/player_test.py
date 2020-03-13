@@ -1,5 +1,6 @@
 from tic_tac_toe.player import Player, Human, Computer
 from tic_tac_toe.board import Board
+import pytest
 
 
 def test_player_initializes_with_a_player_token():
@@ -25,3 +26,23 @@ def test_computer_player_can_make_a_move():
     computer.move(None, new_board.board)
 
     assert new_board.board.index("X") != None
+
+
+@pytest.mark.parametrize(
+    "board_state,open_space_count",
+    [
+        (["X", "O", " ", "O", "X", "O", "X", " ", "X"], 2),
+        (["X", "O", " ", "X", "O", " ", " ", " ", " "], 5),
+    ],
+)
+def test_computer_player_only_places_token_on_free_spaces(
+    board_state, open_space_count
+):
+    new_board = Board()
+    new_board.board = board_state
+
+    computer = Computer(token="X")
+
+    computer.move(None, new_board.board)
+
+    assert new_board.board.count(" ") == open_space_count - 1
