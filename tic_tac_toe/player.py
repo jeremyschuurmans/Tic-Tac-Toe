@@ -1,4 +1,5 @@
 from tic_tac_toe.errors import InputNotNumericError
+import random
 
 
 class Player:
@@ -19,5 +20,17 @@ class Human(Player):
             raise InputNotNumericError()
 
     def move(self, selection, board):
+        board[selection] = self.token
+
+
+class Computer(Player):
+    def __init__(self, token):
+        super().__init__(token)
+
+    def move(self, selection, board):
+        available_spaces = [index for index, space in enumerate(board) if space == " "]
+
+        selection = random.choice(available_spaces)
+
         board[selection] = self.token
 

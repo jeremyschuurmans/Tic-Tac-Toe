@@ -1,4 +1,4 @@
-from tic_tac_toe.player import Player, Human
+from tic_tac_toe.player import Player, Human, Computer
 from tic_tac_toe.board import Board
 
 
@@ -16,3 +16,12 @@ def test_human_player_can_make_a_move():
 
     assert new_board.board[2] == "X"
 
+
+def test_computer_player_can_make_a_move():
+    new_board = Board()
+    # new_board.board = ["X", "O", " ", "X", "O", " ", "X", " ", " "]
+    computer = Computer(token="X")
+
+    computer.move(None, new_board.board)
+
+    assert new_board.board.index("X") != None
