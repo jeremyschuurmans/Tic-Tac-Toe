@@ -66,6 +66,7 @@ def test_within_bounds_returns_true_if_move_is_within_index_range():
         ([" ", " ", " ", " ", " ", " ", " ", " ", " "], False),
         (["X", "O", " ", " ", " ", " ", " ", " ", " "], False),
         (["X", "O", "X", "O", "X", "O", "X", " ", "X"], True),
+        (["X", "O", " ", "X", "O", " ", "X", " ", " "], True),
     ],
 )
 def test_win_can_detect_a_winning_combination_present_on_the_game_board(
@@ -78,13 +79,20 @@ def test_win_can_detect_a_winning_combination_present_on_the_game_board(
     assert new_board.win() == win_status
 
 
-def test_win_saves_the_winner():
+@pytest.mark.parametrize(
+    "board_state,winner_token",
+    [
+        (["X", "O", "X", "O", "X", "O", "X", " ", "X"], "X"),
+        (["X", "O", " ", "X", "O", " ", "X", " ", " "], "X"),
+    ],
+)
+def test_win_saves_the_winner(board_state, winner_token):
     new_board = Board()
 
-    new_board.board = ["X", "O", "X", "O", "X", "O", "X", " ", "X"]
+    new_board.board = board_state
 
     assert new_board.win()
-    assert new_board.winner == "X"
+    assert new_board.winner == winner_token
 
 
 def test_tie_can_detect_a_full_board_with_no_winners():

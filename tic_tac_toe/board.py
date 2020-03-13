@@ -53,6 +53,7 @@ class Board:
                 == self.board[combination[2]]
             ):
                 won = True
+                break
         self.winner = self.board[combination[0]]
         return won
 

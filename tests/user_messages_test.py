@@ -75,7 +75,7 @@ def test_user_interface_congratulates_winner():
     user_message = UserMessages(spy)
     board = Board()
 
-    board.board = ["X", "O", "X", "O", "X", "O", "X", " ", " "]
+    board.board = ["X", "O", " ", "X", "O", " ", "X", " ", " "]
     board.win()
 
     user_message.who_won(board)
