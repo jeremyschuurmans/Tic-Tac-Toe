@@ -5,11 +5,22 @@ class Board:
     def __init__(self):
         self.board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
 
+    win_combinations = (
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6],
+    )
+
     def __getitem__(self, index):
         return self.board[index]
 
-    def turn(self, selection):
-        token = self.current_player()
+    def turn(self, selection, player):
+        player = self.current_player(player)
 
         if not self.within_bounds(selection):
             raise InvalidBoardIndexError()
@@ -17,20 +28,53 @@ class Board:
         if self.position_taken(selection):
             raise PositionAlreadyTakenError()
 
-        self.move(selection, token)
+        self.move(selection, self.board, player)
 
-    def move(self, selection, token):
-        self.board[selection] = token
+    def move(self, selection, board, player):
+        board[selection] = player
 
-    def turn_count(self):
-        return self.board.count("X") + self.board.count("O")
+    def turn_count(self, player):
+        return self.board.count(player.token[0]) + self.board.count(player.token[1])
 
-    def current_player(self):
-        return "X" if self.turn_count() % 2 == 0 else "O"
+    def current_player(self, player):
+        return player.token[0] if self.turn_count(player) % 2 == 0 else player.token[1]
 
     def position_taken(self, index):
-        return self.board[index] == "X" or self.board[index] == "O"
+        return self.board[index] != " "
 
     def within_bounds(self, index):
         return index >= 0 and index <= 8
+
+    def win(self):
+        won = False
+        for combination in self.win_combinations:
+            if (
+                self.board[combination[0]] != " "
+                and self.board[combination[0]]
+                == self.board[combination[1]]
+                == self.board[combination[2]]
+            ):
+                won = True
+                break
+        self.winner()
+        return won
+
+    def tie(self):
+        return self.board.count(" ") == 0 and not self.win()
+
+    def game_over(self):
+        return self.win() or self.tie()
+
+    def winner(self):
+        token_count = 0
+        winning_token = None
+
+        for token in self.board:
+            current_count = self.board.count(token)
+            if current_count > token_count:
+                token_count = current_count
+                winning_token = token
+                break
+
+        return winning_token
 
