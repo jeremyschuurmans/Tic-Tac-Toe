@@ -1,5 +1,5 @@
 from tic_tac_toe.board import Board
-from tic_tac_toe.player import Player, Human, Computer
+from tic_tac_toe.player import Player
 from tic_tac_toe.views import CommandLineBoardPresenter
 from tic_tac_toe.user_messages import UserMessages
 from tic_tac_toe.printer import Printer
@@ -13,7 +13,7 @@ from tic_tac_toe.errors import (
 
 def run():
     board = Board()
-    player = Human(token=None)
+    player = Player(token=["X", "O"])
     view = CommandLineBoardPresenter()
     printer = Printer()
     user_messages = UserMessages(printer)

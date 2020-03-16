@@ -1,5 +1,5 @@
 from tic_tac_toe.board import Board
-from tic_tac_toe.player import Human
+from tic_tac_toe.player import Player
 from tic_tac_toe.errors import InvalidBoardIndexError, PositionAlreadyTakenError
 import pytest
 
@@ -23,7 +23,9 @@ def test_turn_count_keeps_track_of_number_of_turns(board_state, turn_count):
 
     new_board.board = board_state
 
-    assert new_board.turn_count() == turn_count
+    player = Player(token=["X", "O"])
+
+    assert new_board.turn_count(player) == turn_count
 
 
 @pytest.mark.parametrize(
@@ -39,7 +41,9 @@ def test_current_player_returns_current_player_token(board_state, current_player
 
     new_board.board = board_state
 
-    assert new_board.current_player() == current_player
+    player = Player(token=["X", "O"])
+
+    assert new_board.current_player(player) == current_player
 
 
 def test_position_taken_returns_true_if_square_is_already_occupied_and_false_if_not():
@@ -121,7 +125,7 @@ def test_game_over_returns_true_when_a_game_is_won(board_state, game_over_status
 
 def test_board_raises_error_if_index_not_on_board():
     new_board = Board()
-    player = Human(token="X")
+    player = Player(token=["X", "O"])
 
     with pytest.raises(InvalidBoardIndexError):
         new_board.turn(9, player)
@@ -129,7 +133,7 @@ def test_board_raises_error_if_index_not_on_board():
 
 def test_board_raises_error_when_positions_are_taken():
     new_board = Board()
-    player = Human(token="O")
+    player = Player(token=["X", "O"])
 
     new_board.board = ["X"]
 

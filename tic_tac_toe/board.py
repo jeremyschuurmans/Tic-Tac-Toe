@@ -21,7 +21,7 @@ class Board:
         return self.board[index]
 
     def turn(self, selection, player):
-        player.token = self.current_player()
+        player = self.current_player(player)
 
         if not self.within_bounds(selection):
             raise InvalidBoardIndexError()
@@ -29,13 +29,17 @@ class Board:
         if self.position_taken(selection):
             raise PositionAlreadyTakenError()
 
-        player.move(selection, self.board)
+        self.move(selection, self.board, player)
 
-    def turn_count(self):
-        return self.board.count("X") + self.board.count("O")
+    def move(self, selection, board, player):
+        index = selection - 1
+        board[index] = player
 
-    def current_player(self):
-        return "X" if self.turn_count() % 2 == 0 else "O"
+    def turn_count(self, player):
+        return self.board.count(player.token[0]) + self.board.count(player.token[1])
+
+    def current_player(self, player):
+        return player.token[0] if self.turn_count(player) % 2 == 0 else player.token[1]
 
     def position_taken(self, index):
         return self.board[index] != " "

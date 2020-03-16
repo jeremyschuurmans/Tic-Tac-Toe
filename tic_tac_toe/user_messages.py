@@ -101,7 +101,7 @@ class UserMessages:
             time.sleep(UserMessages.SLEEP_DURATION)
 
     def whos_turn(self, player, board):
-        turn = f"It's {board.current_player()}'s turn"
+        turn = f"It's {board.current_player(player)}'s turn"
 
         self.printer.print_item(turn)
 
