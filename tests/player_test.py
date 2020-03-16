@@ -13,6 +13,6 @@ def test_human_player_can_make_a_move():
     new_board = Board()
     player = Player(token=["X", "O"])
 
-    new_board.move(2, new_board.board, player.token[0])
+    new_board.move(1, new_board.board, player.token[0])
 
     assert new_board.board[1] == "X"

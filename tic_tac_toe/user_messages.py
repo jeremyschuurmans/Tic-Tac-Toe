@@ -106,7 +106,7 @@ class UserMessages:
         self.printer.print_item(turn)
 
     def who_won(self, board):
-        winner = f"{board.winner}, you're the winner!"
+        winner = f"{board.winner()}, you're the winner!"
 
         self.printer.print_item(winner)
 

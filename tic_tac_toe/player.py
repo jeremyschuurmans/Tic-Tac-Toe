@@ -10,7 +10,7 @@ class Player:
         user_entry = input()
 
         try:
-            return int(user_entry)
+            return int(user_entry) - 1
         except ValueError:
             raise InputNotNumericError()
 

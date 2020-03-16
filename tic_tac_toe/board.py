@@ -4,7 +4,6 @@ from tic_tac_toe.errors import InvalidBoardIndexError, PositionAlreadyTakenError
 class Board:
     def __init__(self):
         self.board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
-        self.winner = None
 
     win_combinations = (
         [0, 1, 2],
@@ -32,8 +31,7 @@ class Board:
         self.move(selection, self.board, player)
 
     def move(self, selection, board, player):
-        index = selection - 1
-        board[index] = player
+        board[selection] = player
 
     def turn_count(self, player):
         return self.board.count(player.token[0]) + self.board.count(player.token[1])
@@ -58,7 +56,7 @@ class Board:
             ):
                 won = True
                 break
-        self.winner = self.board[combination[0]]
+        self.winner()
         return won
 
     def tie(self):
@@ -66,4 +64,17 @@ class Board:
 
     def game_over(self):
         return self.win() or self.tie()
+
+    def winner(self):
+        token_count = 0
+        winning_token = None
+
+        for token in self.board:
+            current_count = self.board.count(token)
+            if current_count > token_count:
+                token_count = current_count
+                winning_token = token
+                break
+
+        return winning_token
 
