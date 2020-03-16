@@ -20,7 +20,8 @@ class Human(Player):
             raise InputNotNumericError()
 
     def move(self, selection, board):
-        board[selection - 1] = self.token
+        index = selection - 1
+        board[index] = self.token
 
 
 class Computer(Player):
