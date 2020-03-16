@@ -25,7 +25,7 @@ def run():
 
     user_messages.instructions_option()
 
-    if player.get_input() == 1:
+    if player.get_input() == 0:
         user_messages.display_instructions()
         view.display_board(board, printer)
     else:
